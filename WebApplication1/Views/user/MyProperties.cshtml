@@ -1,0 +1,391 @@
+﻿@model IEnumerable<ClassLibrary2.Property>
+
+@{
+    Layout = null;
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Find Houses - HTML5 Template</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="~/Content/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- ARCHIVES CSS -->
+    <link rel="stylesheet" href="~/Content/css/search.css">
+    <link rel="stylesheet" href="~/Content/css/dashbord-mobile-menu.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/swiper.min.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/lightcase.css">
+    <link rel="stylesheet" href="~/Content/css/owl-carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/menu.css">
+    <link rel="stylesheet" href="~/Content/css/slick.css">
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <link rel="stylesheet" id="color" href="~/Content/css/default.css">
+</head>
+
+<body class="inner-pages maxw1600 m0a dashboard-bd">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="int_main_wraapper">
+        <!-- START SECTION HEADINGS -->
+        <!-- Header Container
+        ================================================== -->
+        <div class="dash-content-wrap">
+            <header id="header-container" class="db-top-header">
+                <!-- Header -->
+                <div id="header">
+                    <div class="container-fluid">
+                        <!-- Left Side Content -->
+                        <div class="left-side">
+                            <!-- Logo -->
+                            <div id="logo">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <img src="~/Content/images/logo.svg" alt="">
+                                </a>
+                            </div>
+                            <!-- Mobile Navigation -->
+                            <div class="mmenu-trigger">
+                                <button class="hamburger hamburger--collapse" type="button">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                            <!-- Main Navigation -->
+                            <nav id="navigation" class="style-1">
+                                <ul id="responsive">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "property")">Property</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/#">Pages</a>
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Details", "user")">User Panel</a>
+                                                <ul>
+                                                    <li><a href="@Url.Action("Details", "user")">User Profile</a></li>
+
+                                                    <li><a href="@Url.Action("MyProperties", "user")">My Properties</a></li>
+
+                                                    <li><a href="@Url.Action("Create", "Property")">Add Property</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                                            <li><a href="@Url.Action("Login", "user")">Login</a></li>
+                                            <li><a href="@Url.Action("Create", "user")">Register</a></li>
+                                            <li><a href="@Url.Action("Create", "CM")">CraftsMen</a></li>
+                                            @if (Session["UserID"] != null)
+                                            {
+                                                int roleId = Convert.ToInt32(Session["Role_id"]);
+
+                                                if (roleId == 0)
+                                                {
+                                                    <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                                }
+                                                else if (roleId == 1)
+                                                {
+                                                    <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "auction")">Auction</a>
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Index", "auction")">Auction List</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Create", "auction")">Create Auction</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block"><a href="~/login.html">Login</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block"><a href="@Url.Action("Create", "user")">Register</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0">
+                                </ul>
+                            </nav>
+                            <div class="clearfix"></div>
+                            <!-- Main Navigation / End -->
+                        </div>
+                        <!-- Left Side Content / End -->
+                        <!-- Right Side Content / -->
+                        <div class="header-user-menu user-menu add" style="padding-bottom: 0px; padding-left: 110px; ">
+                            <div class="header-user-name" style="width: 56px;padding-bottom: 20px;margin-left: -55px;">
+                                <span style="margin-left: -35px;">
+                                    @{
+                                        string defaultImagePath = "~/Content/images/Default_Image.png";
+                                        string imageUrl = Url.Content(defaultImagePath);
+                                        string userName = Session["UserName"]?.ToString();
+                                    }
+
+                                    <img src="@imageUrl" alt="">
+
+                                    @if (!string.IsNullOrEmpty(userName))
+                                    {
+                                        <a style="padding: 10px;">Hi, @userName!</a>
+                                    }
+
+                                </span>
+                            </div>
+                            <ul>
+                                <li><a href="@Url.Action("Details", "user")">profile</a></li>
+                                <li><a href="@Url.Action("Create", "property")"> Add Property</a></li>
+
+
+                                <li><a href="@Url.Action("Logout", "user")">Log Out</a></li>
+                            </ul>
+                        </div>
+                        <!-- Right Side Content / End -->
+                    </div>
+                </div>
+                <!-- Header / End -->
+            </header>
+        </div>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        <!-- START SECTION USER PROFILE -->
+        <section class="user-page section-padding pt-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 col-xs-12 pl-0 pr-0 user-dash">
+                        <div class="user-profile-box mb-0">
+                            <div class="sidebar-header"><img src="~/Content/images/logo-blue.svg" alt="header-logo2.png"> </div>
+                            <div class="header clearfix">
+                                <img src="~/Content/images/Default_Image.png" alt="avatar" class="img-fluid profile-img">
+                            </div>
+                            <div class="active-user">
+                                <h2>
+                                    @if (!string.IsNullOrEmpty(userName))
+                                    {
+                                        <a style="padding: 10px;">@userName</a>
+                                    }
+                                </h2>
+                            </div>
+                            <div class="detail clearfix">
+                                <ul class="mb-0">
+                                    <li>
+                                        <a href="@Url.Action("Details", "user")">
+                                            <i class="fa fa-user"></i>Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="active" href="@Url.Action("MyProperties", "user")">
+                                            <i class="fa fa-list" aria-hidden="true"></i>My Properties
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Create", "property")">
+                                            <i class="fa fa-list" aria-hidden="true"></i>Add Property
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Logout", "user")">
+                                            <img src="~/Content/images/icons8-logout-48.png" style="width: 11%;" />Log Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-xs-12 royal-add-property-area section_100 pl-0 user-dash2">
+                        <div class="col-lg-12 mobile-dashbord dashbord">
+                            <div class="dashboard_navigationbar dashxl">
+                                <div class="dropdown">
+                                    <button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10 mr-2"></i> Dashboard Navigation</button>
+                                    <ul id="myDropdown" class="dropdown-content">
+                                        <li>
+                                            <a href="dashboard.html">
+                                                <i class="fa fa-map-marker mr-3"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="user-profile.html">
+                                                <i class="fa fa-user mr-3"></i>Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="my-listings.html">
+                                                <i class="fa fa-list mr-3" aria-hidden="true"></i>My Properties
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="favorited-listings.html">
+                                                <i class="fa fa-heart mr-3" aria-hidden="true"></i>Favorited Properties
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="active" href="add-property.html">
+                                                <i class="fa fa-list mr-3" aria-hidden="true"></i>Add Property
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="payment-method.html">
+                                                <i class="fas fa-credit-card mr-3"></i>Payments
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="invoice.html">
+                                                <i class="fas fa-paste mr-3"></i>Invoices
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="change-password.html">
+                                                <i class="fa fa-lock mr-3"></i>Change Password
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="index.html">
+                                                <i class="fas fa-sign-out-alt mr-3"></i>Log Out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION USER PROFILE -->
+    </div>
+    <!-- Wrapper / End -->
+    <div class="form-horizontal" style="padding-left: 21%; padding-right: 1%;">
+        <div class="dashborad-box">
+            <h4 class="title">Properties List</h4>
+            <div class="section-body listing-table">
+                <div class="table-responsive">
+                    <table class="table table-striped table-scroll" style="max-height: 400px; overflow-y: auto;">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Number of Bedrooms</th>
+                                <th>Number of Bathrooms</th>
+                                <th>Number of Living Rooms</th>
+                                <th>Size</th>
+                                <th>Garage Number</th>
+                                <th>Floor Number</th>
+                                <th>Building Number</th>
+                                <th>Add Images!</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Price</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>@item.NumberOfBedRooms</td>
+                                    <td>@item.NumberOfBathRooms</td>
+                                    <td>@item.NumOfLivingRoom</td>
+                                    <td>@item.size</td>
+                                    <td>@item.garage_num</td>
+                                    <td>@item.Floor_Num</td>
+                                    <td>@item.Building_Num</td>
+                                    <td>
+                                        @Html.ActionLink("Add", "MCreate", new { proId = item.Pro_id })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- START FOOTER -->
+        <footer class="first-footer" style="padding-left: 315px; padding-right: 10px;">
+            <div class="second-footer">
+                <div class="container">
+                    <p>2023 © Copyright - All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+        <!-- END FOOTER -->
+        <!-- START PRELOADER -->
+        <div id="preloader">
+            <div id="status">
+                <div class="status-mes"></div>
+            </div>
+        </div>
+        <!-- END PRELOADER -->
+        <!-- ARCHIVES JS -->
+        <script src="~/Scripts/js/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/js/popper.min.js"></script>
+        <script src="~/Scripts/js/jquery-ui.js"></script>
+        <script src="~/Scripts/js/tether.min.js"></script>
+        <script src="~/Scripts/js/moment.js"></script>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/mmenu.min.js"></script>
+        <script src="~/Scripts/js/mmenu.js"></script>
+        <script src="~/Scripts/js/swiper.min.js"></script>
+        <script src="~/Scripts/js/swiper.js"></script>
+        <script src="~/Scripts/js/slick.min.js"></script>
+        <script src="~/Scripts/js/slick2.js"></script>
+        <script src="~/Scripts/js/fitvids.js"></script>
+        <script src="~/Scripts/js/jquery.waypoints.min.js"></script>
+        <script src="~/Scripts/js/jquery.counterup.min.js"></script>
+        <script src="~/Scripts/js/imagesloaded.pkgd.min.js"></script>
+        <script src="~/Scripts/js/isotope.pkgd.min.js"></script>
+        <script src="~/Scripts/js/smooth-scroll.min.js"></script>
+        <script src="~/Scripts/js/lightcase.js"></script>
+        <script src="~/Scripts/js/search.js"></script>
+        <script src="~/Scripts/js/owl.carousel.js"></script>
+        <script src="~/Scripts/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/Scripts/js/ajaxchimp.min.js"></script>
+        <script src="~/Scripts/js/newsletter.js"></script>
+        <script src="~/Scripts/js/jquery.form.js"></script>
+        <script src="~/Scripts/js/jquery.validate.min.js"></script>
+        <script src="~/Scripts/js/searched.js"></script>
+        <script src="~/Scripts/js/dashbord-mobile-menu.js"></script>
+        <script src="~/Scripts/js/forms-2.js"></script>
+        <script src="~/Scripts/js/color-switcher.js"></script>
+        <script src="~/Scripts/js/dropzone.js"></script>
+
+        <!-- MAIN JS -->
+        <script src="~/Scripts/js/script.js"></script>
+        <script>
+            $(".dropzone").dropzone({
+                dictDefaultMessage: "<i class='fa fa-cloud-upload'></i> Click here or drop files to upload",
+            });
+
+        </script>
+        <script>
+            $(".header-user-name").on("click", function () {
+                $(".header-user-menu ul").toggleClass("hu-menu-vis");
+                $(this).toggleClass("hu-menu-visdec");
+            });
+
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $("input:text.date").datepicker({ dateFormat: "dd/mm/yy" });
+            });
+        </script>
+</body>

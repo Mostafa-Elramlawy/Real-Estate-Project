@@ -1,0 +1,192 @@
+[
+    {
+        "id": "marker-1",
+        "center": [40.761077, -73.983307],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",
+		"image": "images/feature-properties/fp-1.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-2",
+        "center": [40.725382, -73.991968],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-2.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-3",
+        "center": [40.759677, -73.917586],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-3.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-4",
+        "center": [40.710249, -73.951918],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-4.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-5",
+        "center": [40.732106, -73.857161],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-5.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-6",
+        "center": [40.782558, -73.970457],
+        "icon": "<i class='fas fa-home'></i>",
+        "title": "Gym in Town",
+        "desc": "Est St, 77 - Central Park South, NYC",
+        "price": "4.5 (6 Reviews)",
+        "image": "images/popular-listings/6.jpeg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-7",
+        "center": [40.739390, -74.038435],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-6.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-8",
+        "center": [40.770079, -73.874327],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-7.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-9",
+        "center": [40.730065, -73.892044],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-8.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-10",
+        "center": [40.731922, -73.825783],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-9.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-11",
+        "center": [40.773168, -73.799115],
+        "icon": "<i class='fa fa-building'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-1.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-12",
+        "center": [40.810119, -73.882946],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-2.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-13",
+        "center": [40.812718, -73.828701],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-3.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-14",
+        "center": [40.790367, -74.012722],
+        "icon": "<i class='fa fa-home'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-4.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-15",
+        "center": [40.790367, -74.012722],
+        "icon": "<i class='fa fa-building'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-5.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-16",
+        "center": [40.812718, -73.828701],
+        "icon": "<i class='fa fa-building'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-6.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-17",
+        "center": [40.730065, -73.892044],
+        "icon": "<i class='fa fa-building'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-7.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-18",
+        "center": [40.761077, -73.983307],
+        "icon": "<i class='fa fa-building'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-8.jpg",
+        "link": "single-property-1.html"
+	},
+    {
+        "id": "marker-19",
+        "center": [40.725382, -73.991968],
+        "icon": "<i class='fa fa-building'></i>",
+		"title": "Real House Luxury Villa",
+		"desc": "Est St, 77 - Central Park South, NYC",
+		"price": "$ 230,000",		
+		"image": "images/feature-properties/fp-9.jpg",
+        "link": "single-property-1.html"
+	}
+]

@@ -1,0 +1,785 @@
+﻿@model ClassLibrary2.PropertyViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Property Details</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:500,600,800" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="font/flaticon.css">
+    <link rel="stylesheet" href="~/Content/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/css/fontawesome-5-all.min.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- LEAFLET MAP -->
+    <link rel="stylesheet" href="~/Content/css/leaflet.css">
+    <link rel="stylesheet" href="~/Content/css/leaflet-gesture-handling.min.css">
+    <link rel="stylesheet" href="~/Content/css/leaflet.markercluster.css">
+    <link rel="stylesheet" href="~/Content/css/leaflet.markercluster.default.css">
+    <!-- ARCHIVES CSS -->
+    <link rel="stylesheet" href="~/Content/css/timedropper.css">
+    <link rel="stylesheet" href="~/Content/css/datedropper.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/lightcase.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/menu.css">
+    <link rel="stylesheet" href="~/Content/css/slick.css">
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <link rel="stylesheet" id="color" href="~/Content/css/default.css">
+</head>
+
+
+
+<body class="inner-pages sin-1 homepage-4 hd-white">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- START SECTION HEADINGS -->
+        <!-- Header Container
+    ================================================== -->
+        <header id="header-container">
+            <!-- Header -->
+            <div id="header" style="padding-bottom: 25px;">
+                <div class="container container-header" style="width: 100%;">
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+                        <!-- Logo -->
+                        <div id="logo">
+                            <a href="@Url.Action("Index", "Home")">
+                                <img src="~/Content/images/logo-red.svg" alt="">
+                            </a>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1">
+                            <ul id="responsive">
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")">Home</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "property")">Property</a>
+                                </li>
+                                <li>
+                                    <a href="~/#">Pages</a>
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Details", "user")">User Panel</a>
+                                            <ul>
+                                                <li><a href="@Url.Action("Details", "user")">User Profile</a></li>
+
+                                                <li><a href="@Url.Action("Create", "Property")">My Properties</a></li>
+
+                                                <li><p>@Html.ActionLink("Add Property", "Create")</p></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                                        <li><a href="@Url.Action("Login", "user")">Login</a></li>
+                                        <li><a href="@Url.Action("Create", "user")">Register</a></li>
+                                        <li><a href="@Url.Action("Create", "CM")">CraftsMen</a></li>
+                                        @if (Session["UserID"] != null)
+                                        {
+                                            int roleId = Convert.ToInt32(Session["Role_id"]);
+
+                                            if (roleId == 0)
+                                            {
+                                                <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                            }
+                                            else if (roleId == 1)
+                                            {
+                                                <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "auction")">Auction</a>
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Index", "auction")">Auction List</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Create", "auction")">Create Auction</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("Index", "Admin")">Admin Dashbourd</a></li>
+
+                                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block"><a href="~/login.html">Login</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block"><a href="@Url.Action("Create", "user")">Register</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0">
+                            </ul>
+                        </nav>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+                    <!-- Right Side Content / End -->
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex">
+                        <!-- Header Widget -->
+                        <div class="header-widget">
+                            <a href="@Url.Action("Create", "property")" class="button border" style="padding-right: 9px;padding-bottom: 13px;">
+                                Add Property
+                                <i>
+                                    <img src="~/Content/images/icons8-house-white.png" style="width: 20px;height: 20px;" />
+                                </i>
+                            </a>
+                        </div>
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+                    <!-- Right Side Content / End -->
+                    <div class="header-user-menu user-menu add" style="padding-bottom: 0px; padding-left: 110px; ">
+                        <div class="header-user-name" style="width: 56px;padding-bottom: 20px;margin-left: -55px;">
+                            <span style="margin-left: -35px;">
+                                @{
+                                    string defaultImagePath = "~/Content/images/Default_Image.png";
+                                    string imageUrl = Url.Content(defaultImagePath);
+                                    string userName = Session["UserName"]?.ToString();
+                                }
+
+                                <img src="@imageUrl" alt="">
+
+                                @if (!string.IsNullOrEmpty(userName))
+                                {
+                                    <a style="padding: 10px;">Hi, @userName!</a>
+                                }
+
+                            </span>
+                        </div>
+                        <ul>
+                            <li><a href="@Url.Action("Details", "user")">profile</a></li>
+                            <li><a href="@Url.Action("Create", "property")"> Add Property</a></li>
+                            <li><a href="@Url.Action("Logout", "user")">Log Out</a></li>
+                        </ul>
+                    </div>
+                    <!-- Right Side Content / End -->
+
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <!-- Header Widget -->
+                        <div class="header-widget sign-in">
+                            <a href="@Url.Action("Login", "user")">Sign In</a>
+                        </div>
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+                    <!-- lang-wrap-->
+                    <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
+                        <div class="lang-wrap">
+                            <div class="show-lang">
+                                <span>
+                                    <img src="~/Content/images/globle-gray.png" style="width: 17px;padding-bottom: 7px;" /><strong>ENG</strong>
+                                </span>
+                                <i class="fa fa-caret-down arrlan"></i>
+                            </div>
+                            <ul class="lang-tooltip lang-action no-list-style">
+                                <li><a href="#" class="current-lan" data-lantext="En">English</a></li>
+                                <li><a href="#" data-lantext="Fr">Francais</a></li>
+                                <li><a href="#" data-lantext="Es">Espanol</a></li>
+                                <li><a href="#" data-lantext="De">Deutsch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- lang-wrap end-->
+                </div>
+            </div>
+
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+        <!-- END SECTION HEADINGS -->
+        <!-- START SECTION PROPERTIES LISTING -->
+        <section class="single-proper blog details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-12 blog-pots">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <section class="headings-2 pt-0">
+                                    <div class="pro-wrapper">
+                                        <div class="detail-wrapper-body">
+                                            <div class="listing-title-bar">
+                                                <h3>
+                                                    @Html.DisplayFor(model => model.Property.Title)<span class="mrg-l-5 category-tag">@Html.DisplayFor(model => model.Status_ID)</span>
+                                                </h3>
+                                                <div class="mt-0">
+                                                    <a class="listing-address">
+                                                        @Html.DisplayFor(model => model.Property.City_id)
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single detail-wrapper mr-2" style="padding-left: 270px;">
+                                            <div class="detail-wrapper-body">
+                                                <div class="listing-title-bar">
+                                                    <h4 style="padding: 15px;">@Html.DisplayFor(model => model.Property.Price)EG</h4>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- main slider carousel items -->
+                                <div id="listingDetailsSlider" class="carousel listing-details-sliders slide mb-30">
+                                    <h5 class="mb-4">Gallery</h5>
+                                    <div id="listingDetailsSlider" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @foreach (var image in Model.PropertyImages)
+                                            {
+                                                <div class="item @(image == Model.PropertyImages.First() ? "active" : "")">
+                                                    <img src="@Url.Content(image.img_path)" class="img-fluid" alt="slider-listing">
+                                                </div>
+                                            }
+                                        </div>
+                                        <a class="carousel-control left" href="#listingDetailsSlider" data-slide="prev"><i class="fa fa-angle-left" style="margin: 0px;margin-top: 6px;margin-right: 2px;"></i></a>
+                                        <a class="carousel-control right" href="#listingDetailsSlider" data-slide="next" style="padding-right: 10px;"><i class="fa fa-angle-right"></i></a>
+                                    </div>
+                                    <ul class="carousel-indicators smail-listing list-inline">
+                                        @foreach (var image in Model.PropertyImages)
+                                        {
+                                            <li class="list-inline-item @(image == Model.PropertyImages.First() ? "active" : "")">
+                                                <a id="carousel-selector-@(image.Pro_id)" data-slide-to="@(image.Pro_id)" data-target="#listingDetailsSlider">
+                                                    <img src="@Url.Content(image.img_path)" class="img-fluid" alt="listing-small">
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <div class="blog-info details mb-30">
+                                    <h5 class="mb-4">Description</h5>
+                                    <p class="mb-3">
+                                        @Html.DisplayFor(model => model.Property.Description)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single homes-content details mb-30">
+                            <!-- title -->
+                            <h5 class="mb-4">Property Details</h5>
+                            <ul class="homes-list clearfix">
+                                <li>
+                                    <span class="font-weight-bold mr-1">Property ID:</span>
+                                    <span class="det">@Html.DisplayFor(model => model.Property.Pro_id)</span>
+                                </li>
+                                <li>
+                                    <span class="font-weight-bold mr-1">Property Type:</span>
+                                    <span class="det">@Html.DisplayFor(model => model.Property.P_Type_ID)</span>
+                                </li>
+                                <li>
+                                    <span class="font-weight-bold mr-1">Property status:</span>
+                                    <span class="det">@Html.DisplayFor(model => model.Property.Status_ID)</span>
+                                </li>
+                                <li>
+                                    <span class="font-weight-bold mr-1">Property Price:</span>
+                                    <span class="det">$ @Html.DisplayFor(model => model.Property.Price)</span>
+                                </li>
+                                <li>
+                                    <span class="font-weight-bold mr-1">Bedrooms:</span>
+                                    <span class="det">@Html.DisplayFor(model => model.Property.NumberOfBedRooms)</span>
+                                </li>
+                                <li>
+                                    <span class="font-weight-bold mr-1">Bath:</span>
+                                    <span class="det">@Html.DisplayFor(model => model.Property.NumberOfBathRooms)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="floor-plan property wprt-image-video w50 pro">
+                            <h5>3D Design:</h5>
+                            <div class="property-details">
+                                <iframe src="@Model.Property.P3D_path" width="100%" height="500px" frameborder="0"></iframe>
+                            </div>
+                            <h5>OR go to the Link</h5>
+                            <div class="property-details">
+                                <a href="@Model.Property.P3D_path" target="_blank" class="btn btn-primary">View 3D Design</a>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="col-lg-4 col-md-12 car">
+                        <div class="single widget">
+                            <!-- Start: Schedule a Tour -->
+                            <div class="schedule widget-boxed mt-33 mt-0">
+                                <div class="widget-boxed-header">
+                                    <h4><i class="fa fa-calendar pr-3 padd-r-10"></i>Schedule a Tour</h4>
+                                </div>
+                                <div class="widget-boxed-body">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-12 book">
+                                            <input type="text" id="reservation-date" data-lang="en" data-large-mode="true" data-min-year="2017" data-max-year="2020" data-disabled-days="08/17/2017,08/18/2017" data-id="datedropper-0" data-theme="my-style" class="form-control" readonly="">
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 book2">
+                                            <input type="text" id="reservation-time" class="form-control" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="row mrg-top-15 mb-3">
+                                        <div class="col-lg-6 col-md-12 mt-4">
+                                            <label class="mb-4">Adult</label>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn counter-btn theme-cl btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </span>
+                                                <input type="text" name="quant[1]" class="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn counter-btn theme-cl btn-number" data-type="plus" data-field="quant[1]">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-12 mt-4">
+                                            <label class="mb-4">Children</label>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn counter-btn theme-cl btn-number" disabled="disabled" data-type="minus" data-field="quant[2]">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </span>
+                                                <input type="text" name="quant[2]" class="border-0 text-center form-control input-number" data-min="0" data-max="10" value="0">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn counter-btn theme-cl btn-number" data-type="plus" data-field="quant[2]">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="payment-method.html" class="btn reservation btn-radius theme-btn full-width mrg-top-10">Submit Request</a>
+                                </div>
+                            </div>
+                            <!-- End: Schedule a Tour -->
+                            <!-- end author-verified-badge -->
+                            <div class="sidebar">
+                                <div class="widget-boxed mt-33 mt-5">
+                                    <div class="widget-boxed-header">
+                                        <h4>Agent Information</h4>
+                                    </div>
+                                    <div class="widget-boxed-body">
+                                        <div class="sidebar-widget author-widget2">
+                                            <div class="author-box clearfix">
+                                                <img src="~/Content/images/testimonials/ts-1.jpg" alt="author-image" class="author__img">
+                                                <h4 class="author__title">Lisa Clark</h4>
+                                                <p class="author__meta">Agent of Property</p>
+                                            </div>
+                                            <ul class="author__contact">
+                                                <li><span class="la la-map-marker"><i class="fa fa-map-marker"></i></span>302 Av Park, New York</li>
+                                                <li><span class="la la-phone"><i class="fa fa-phone" aria-hidden="true"></i></span><a href="#">(234) 0200 17813</a></li>
+                                                <li><span class="la la-envelope-o"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="#">lisa@gmail.com</a></li>
+                                            </ul>
+                                            <div class="agent-contact-form-sidebar">
+                                                <h4>Request Inquiry</h4>
+                                                <form name="contact_form" method="post" action="functions.php">
+                                                    <input type="text" id="fname" name="full_name" placeholder="Full Name" required />
+                                                    <input type="number" id="pnumber" name="phone_number" placeholder="Phone Number" required />
+                                                    <input type="email" id="emailid" name="email_address" placeholder="Email Address" required />
+                                                    <textarea placeholder="Message" name="message" required></textarea>
+                                                    <input type="submit" name="sendmessage" class="multiple-send-message" value="Submit Request" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main-search-field-2">
+                                    <div class="widget-boxed mt-5">
+                                        <div class="widget-boxed-header">
+                                            <h4>Recent Properties</h4>
+                                        </div>
+                                        <div class="widget-boxed-body">
+                                            <div class="recent-post">
+                                                <div class="recent-main">
+                                                    <div class="recent-img">
+                                                        <a href="blog-details.html"><img src="~/Content/images/feature-properties/fp-1.jpg" alt=""></a>
+                                                    </div>
+                                                    <div class="info-img">
+                                                        <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                        <p>$230,000</p>
+                                                    </div>
+                                                </div>
+                                                <div class="recent-main my-4">
+                                                    <div class="recent-img">
+                                                        <a href="blog-details.html"><img src="~/Content/images/feature-properties/fp-2.jpg" alt=""></a>
+                                                    </div>
+                                                    <div class="info-img">
+                                                        <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                        <p>$230,000</p>
+                                                    </div>
+                                                </div>
+                                                <div class="recent-main">
+                                                    <div class="recent-img">
+                                                        <a href="blog-details.html"><img src="~/Content/images/feature-properties/fp-3.jpg" alt=""></a>
+                                                    </div>
+                                                    <div class="info-img">
+                                                        <a href="blog-details.html"><h6>Family Home</h6></a>
+                                                        <p>$230,000</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Start: Specials offer -->
+                                    <div class="widget-boxed popular mt-5">
+                                        <div class="widget-boxed-header">
+                                            <h4>Specials of the day</h4>
+                                        </div>
+                                        <div class="widget-boxed-body">
+                                            <div class="banner"><img src="~/Content/images/single-property/banner.jpg" alt=""></div>
+                                        </div>
+                                    </div>
+                                    <!-- End: Specials offer -->
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+                <!-- START SIMILAR PROPERTIES -->
+                <section class="similar-property featured portfolio p-0 bg-white-inner">
+                    <div class="container">
+                        <h5>Similar Properties</h5>
+                        <div class="row portfolio-items">
+                            <div class="item col-lg-4 col-md-6 col-xs-12 landscapes">
+                                <div class="project-single">
+                                    <div class="project-inner project-head">
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="single-property-1.html" class="homes-img">
+                                                <div class="homes-tag button alt featured">Featured</div>
+                                                <div class="homes-tag button alt sale">For Sale</div>
+                                                <div class="homes-price">$9,000/mo</div>
+                                                <img src="~/Content/images/blog/b-11.jpg" alt="home-1" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- homes content -->
+                                    <div class="homes-content">
+                                        <!-- homes address -->
+                                        <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
+                                        <p class="homes-address mb-3">
+                                            <a href="single-property-1.html">
+                                                <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                            </a>
+                                        </p>
+                                        <!-- homes List -->
+                                        <ul class="homes-list clearfix pb-3">
+                                            <li class="the-icons">
+                                                <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                                <span>6 Bedrooms</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                                <span>3 Bathrooms</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                                <span>720 sq ft</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-car mr-2" aria-hidden="true"></i>
+                                                <span>2 Garages</span>
+                                            </li>
+                                        </ul>
+                                        <div class="footer">
+                                            <a href="agent-details.html">
+                                                <img src="~/Content/images/testimonials/ts-1.jpg" alt="" class="mr-2"> Lisa Jhonson
+                                            </a>
+                                            <span>2 months ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item col-lg-4 col-md-6 col-xs-12 people">
+                                <div class="project-single">
+                                    <div class="project-inner project-head">
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="single-property-1.html" class="homes-img">
+                                                <div class="homes-tag button sale rent">For Rent</div>
+                                                <div class="homes-price">$3,000/mo</div>
+                                                <img src="~/Content/images/blog/b-12.jpg" alt="home-1" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- homes content -->
+                                    <div class="homes-content">
+                                        <!-- homes address -->
+                                        <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
+                                        <p class="homes-address mb-3">
+                                            <a href="single-property-1.html">
+                                                <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                            </a>
+                                        </p>
+                                        <!-- homes List -->
+                                        <ul class="homes-list clearfix pb-3">
+                                            <li class="the-icons">
+                                                <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                                <span>6 Bedrooms</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                                <span>3 Bathrooms</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                                <span>720 sq ft</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-car mr-2" aria-hidden="true"></i>
+                                                <span>2 Garages</span>
+                                            </li>
+                                        </ul>
+                                        <div class="footer">
+                                            <a href="agent-details.html">
+                                                <img src="~/Content/images/testimonials/ts-2.jpg" alt="" class="mr-2"> Karl Smith
+                                            </a>
+                                            <span>2 months ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item col-lg-4 col-md-6 col-xs-12 people landscapes no-pb pbp-3">
+                                <div class="project-single no-mb mbp-3">
+                                    <div class="project-inner project-head">
+                                        <div class="homes">
+                                            <!-- homes img -->
+                                            <a href="single-property-1.html" class="homes-img">
+                                                <div class="homes-tag button alt sale">For Sale</div>
+                                                <div class="homes-price">$9,000/mo</div>
+                                                <img src="~/Content/images/blog/b-1.jpg" alt="home-1" class="img-responsive">
+                                            </a>
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="single-property-1.html" class="btn"><i class="fa fa-link"></i></a>
+                                            <a href="https://www.youtube.com/watch?v=14semTlwyUY" class="btn popup-video popup-youtube"><i class="fas fa-video"></i></a>
+                                            <a href="single-property-2.html" class="img-poppu btn"><i class="fa fa-photo"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- homes content -->
+                                    <div class="homes-content">
+                                        <!-- homes address -->
+                                        <h3><a href="single-property-1.html">Real House Luxury Villa</a></h3>
+                                        <p class="homes-address mb-3">
+                                            <a href="single-property-1.html">
+                                                <i class="fa fa-map-marker"></i><span>Est St, 77 - Central Park South, NYC</span>
+                                            </a>
+                                        </p>
+                                        <!-- homes List -->
+                                        <ul class="homes-list clearfix pb-3">
+                                            <li class="the-icons">
+                                                <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                                <span>6 Bedrooms</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                                <span>3 Bathrooms</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                                <span>720 sq ft</span>
+                                            </li>
+                                            <li class="the-icons">
+                                                <i class="flaticon-car mr-2" aria-hidden="true"></i>
+                                                <span>2 Garages</span>
+                                            </li>
+                                        </ul>
+                                        <div class="footer">
+                                            <a href="agent-details.html">
+                                                <img src="~/Content/images/testimonials/ts-3.jpg" alt="" class="mr-2"> katy Teddy
+                                            </a>
+                                            <span>2 months ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- END SIMILAR PROPERTIES -->
+            </div>
+        </section>
+        <!-- END SECTION PROPERTIES LISTING -->
+        <!--register form -->
+        <div class="login-and-register-form modal">
+            <div class="main-overlay"></div>
+            <div class="main-register-holder">
+                <div class="main-register fl-wrap">
+                    <div class="close-reg"><i class="fa fa-times" style="padding-top: 13px;"></i></div>
+                    <h3>Welcome to <span>Find<strong>Houses</strong></span></h3>
+                    <div class="soc-log fl-wrap">
+                        <p>Login</p>
+                        <a href="#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
+                        <a href="#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
+                    </div>
+                    <div class="log-separator fl-wrap"><span>Or</span></div>
+                    <div id="tabs-container">
+                        <ul class="tabs-menu">
+                            <li class="current"><a href="#tab-1">Login</a></li>
+                            <li><a href="#tab-2">Register</a></li>
+                        </ul>
+                        <div class="tab">
+                            <div id="tab-1" class="tab-contents">
+                                <div class="custom-form">
+                                    <form method="post" name="registerform">
+                                        <label>Username or Email Address * </label>
+                                        <input name="email" type="text" onClick="this.select()" value="">
+                                        <label>Password * </label>
+                                        <input name="password" type="password" onClick="this.select()" value="">
+                                        <button type="submit" class="log-submit-btn"><span>Log In</span></button>
+                                        <div class="clearfix"></div>
+                                        <div class="filter-tags">
+                                            <input id="check-a" type="checkbox" name="check">
+                                            <label for="check-a">Remember me</label>
+                                        </div>
+                                    </form>
+                                    <div class="lost_password">
+                                        <a href="#">Lost Your Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab">
+                                <div id="tab-2" class="tab-contents">
+                                    <div class="custom-form">
+                                        <form method="post" name="registerform" class="main-register-form" id="main-register-form2">
+                                            <label>First Name * </label>
+                                            <input name="name" type="text" onClick="this.select()" value="">
+                                            <label>Second Name *</label>
+                                            <input name="name2" type="text" onClick="this.select()" value="">
+                                            <label>Email Address *</label>
+                                            <input name="email" type="text" onClick="this.select()" value="">
+                                            <label>Password *</label>
+                                            <input name="password" type="password" onClick="this.select()" value="">
+                                            <button type="submit" class="log-submit-btn"><span>Register</span></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--register form end -->
+        <!-- ARCHIVES JS -->
+        <script src="~/Scripts/js/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/js/jquery-ui.js"></script>
+        <script src="~/Scripts/js/range-slider.js"></script>
+        <script src="~/Scripts/js/tether.min.js"></script>
+        <script src="~/Scripts/js/popper.min.js"></script>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/mmenu.min.js"></script>
+        <script src="~/Scripts/js/mmenu.js"></script>
+        <script src="~/Scripts/js/slick.min.js"></script>
+        <script src="~/Scripts/js/slick4.js"></script>
+        <script src="~/Scripts/js/fitvids.js"></script>
+        <script src="~/Scripts/js/smooth-scroll.min.js"></script>
+        <script src="~/Scripts/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/Scripts/js/popup.js"></script>
+        <script src="~/Scripts/js/ajaxchimp.min.js"></script>
+        <script src="~/Scripts/js/newsletter.js"></script>
+        <script src="~/Scripts/js/timedropper.js"></script>
+        <script src="~/Scripts/js/datedropper.js"></script>
+        <script src="~/Scripts/js/jqueryadd-count.js"></script>
+        <script src="~/Scripts/js/leaflet.js"></script>
+        <script src="~/Scripts/js/leaflet-gesture-handling.min.js"></script>
+        <script src="~/Scripts/js/leaflet-providers.js"></script>
+        <script src="~/Scripts/js/leaflet.markercluster.js"></script>
+        <script src="~/Scripts/js/map-single.js"></script>
+        <script src="~/Scripts/js/color-switcher.js"></script>
+        <script src="~/Scripts/js/inner.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Date Dropper Script-->
+        <script>
+            $('#reservation-date').dateDropper();
+
+        </script>
+        <!-- Time Dropper Script-->
+        <script>
+            this.$('#reservation-time').timeDropper({
+                setCurrentTime: false,
+                meridians: true,
+                primaryColor: "#e8212a",
+                borderColor: "#e8212a",
+                minutesInterval: '15'
+            });
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
+                    disableOn: 700,
+                    type: 'iframe',
+                    mainClass: 'mfp-fade',
+                    removalDelay: 160,
+                    preloader: false,
+                    fixedContentPos: false
+                });
+            });
+
+        </script>
+
+        <script>
+            $('.slick-carousel').each(function () {
+                var slider = $(this);
+                $(this).slick({
+                    infinite: true,
+                    dots: false,
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '0'
+                });
+
+                $(this).closest('.slick-slider-area').find('.slick-prev').on("click", function () {
+                    slider.slick('slickPrev');
+                });
+                $(this).closest('.slick-slider-area').find('.slick-next').on("click", function () {
+                    slider.slick('slickNext');
+                });
+            });
+
+        </script>
+
+    </div>
+    <!-- Wrapper / End -->
+</body>

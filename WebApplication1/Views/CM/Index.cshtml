@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ClassLibrary2.CraftsMen2>
+
+<h2>Craftsmen List</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Job</th>
+        <th>Phone</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var craftsman in Model)
+    {
+        <tr>
+            <td>@craftsman.CM_ID</td>
+            <td>@craftsman.CM_Name</td>
+            <td>@craftsman.CM_Address</td>
+            <td>@craftsman.CM_Job</td>
+            <td>@craftsman.CM_Phone</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = craftsman.CM_ID })
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = craftsman.CM_ID })
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Create New", "Create")

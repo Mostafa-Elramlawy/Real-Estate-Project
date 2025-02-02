@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Graduation Project\\WebApplication1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2145BEF9-C4F5-4AC6-AA98-64013498BA88}|PP1.csproj|d:\\graduation project\\webapplication1\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2145BEF9-C4F5-4AC6-AA98-64013498BA88}|PP1.csproj|solutionrelative:web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2145BEF9-C4F5-4AC6-AA98-64013498BA88}|PP1.csproj|d:\\graduation project\\webapplication1\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2145BEF9-C4F5-4AC6-AA98-64013498BA88}|PP1.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2145BEF9-C4F5-4AC6-AA98-64013498BA88}|PP1.csproj|d:\\graduation project\\webapplication1\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2145BEF9-C4F5-4AC6-AA98-64013498BA88}|PP1.csproj|solutionrelative:views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Graduation Project\\WebApplication1\\Web.config",
+              "RelativeDocumentMoniker": "Web.config",
+              "ToolTip": "D:\\Graduation Project\\WebApplication1\\Web.config",
+              "RelativeToolTip": "Web.config",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-01-25T10:34:53.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Graduation Project\\WebApplication1\\packages.config",
+              "RelativeDocumentMoniker": "packages.config",
+              "ToolTip": "D:\\Graduation Project\\WebApplication1\\packages.config",
+              "RelativeToolTip": "packages.config",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-01-25T10:34:48.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "web.config",
+              "DocumentMoniker": "D:\\Graduation Project\\WebApplication1\\Views\\web.config",
+              "RelativeDocumentMoniker": "Views\\web.config",
+              "ToolTip": "D:\\Graduation Project\\WebApplication1\\Views\\web.config",
+              "RelativeToolTip": "Views\\web.config",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-01-25T10:33:52.055Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

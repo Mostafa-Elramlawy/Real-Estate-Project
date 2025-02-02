@@ -1,0 +1,57 @@
+$flaticon-font: "flaticon";
+
+@font-face {
+    font-family: $flaticon-font;
+    src: url("./flaticon.ttf?ab0c18a0c042c76c5b6d9a09748edddc") format("truetype"),
+url("./flaticon.woff?ab0c18a0c042c76c5b6d9a09748edddc") format("woff"),
+url("./flaticon.woff2?ab0c18a0c042c76c5b6d9a09748edddc") format("woff2"),
+url("./flaticon.eot?ab0c18a0c042c76c5b6d9a09748edddc#iefix") format("embedded-opentype"),
+url("./flaticon.svg?ab0c18a0c042c76c5b6d9a09748edddc#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon-map: (
+    "heart": "\f101",
+    "compare": "\f102",
+    "share": "\f103",
+    "bed": "\f104",
+    "bathtub": "\f105",
+    "square": "\f106",
+    "car": "\f107",
+    "calendario": "\f108",
+);
+
+.flaticon-heart:before {
+    content: map-get($flaticon-map, "heart");
+}
+.flaticon-compare:before {
+    content: map-get($flaticon-map, "compare");
+}
+.flaticon-share:before {
+    content: map-get($flaticon-map, "share");
+}
+.flaticon-bed:before {
+    content: map-get($flaticon-map, "bed");
+}
+.flaticon-bathtub:before {
+    content: map-get($flaticon-map, "bathtub");
+}
+.flaticon-square:before {
+    content: map-get($flaticon-map, "square");
+}
+.flaticon-car:before {
+    content: map-get($flaticon-map, "car");
+}
+.flaticon-calendario:before {
+    content: map-get($flaticon-map, "calendario");
+}

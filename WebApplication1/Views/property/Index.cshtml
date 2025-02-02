@@ -1,0 +1,789 @@
+﻿@model List<ClassLibrary2.PropertyViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    var results = new List<string>();
+    var keyword = "Property";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Full Grid</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="~/Content/font/flaticon.css">
+    <link rel="stylesheet" href="~/Content/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/css/fontawesome-5-all.min.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- ARCHIVES CSS -->
+    <link rel="stylesheet" href="~/Content/css/search.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/lightcase.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/menu.css">
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <link rel="stylesheet" id="color" href="~/Content/css/default.css">
+</head>
+
+<body class="inner-pages homepage-4 agents list hp-6 full hd-white">
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- START SECTION HEADINGS -->
+        <!-- Header Container
+        ================================================== -->
+        <header id="header-container">
+            <!-- Header -->
+            <div id="header">
+                <div class="container container-header">
+                    <!-- Left Side Content -->
+                    <div class="left-side">
+                        <!-- Logo -->
+                        <div id="logo">
+                            <a href="@Url.Action("Index", "Home")">
+                                <img src="~/Content/images/logo-red.svg" alt="">
+                            </a>
+                        </div>
+                        <!-- Mobile Navigation -->
+                        <div class="mmenu-trigger">
+                            <button class="hamburger hamburger--collapse" type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+                        </div>
+                        <!-- Main Navigation -->
+                        <nav id="navigation" class="style-1">
+                            <ul id="responsive">
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")">Home</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "property")">Property</a>
+                                </li>
+                                <li>
+                                    <a href="~/#">Pages</a>
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Details", "user")">User Panel</a>
+                                            <ul>
+                                                <li><a href="@Url.Action("Details", "user")">User Profile</a></li>
+
+                                                <li><a href="@Url.Action("Create", "Property")">My Properties</a></li>
+
+                                                <li><p>@Html.ActionLink("Add Property", "Create")</p></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                                        <li><a href="@Url.Action("Login", "user")">Login</a></li>
+                                        <li><a href="@Url.Action("Create", "user")">Register</a></li>
+                                        <li><a href="@Url.Action("Create", "CM")">CraftsMen</a></li>
+                                        @if (Session["UserID"] != null)
+                                        {
+                                            int roleId = Convert.ToInt32(Session["Role_id"]);
+
+                                            if (roleId == 0)
+                                            {
+                                                <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                            }
+                                            else if (roleId == 1)
+                                            {
+                                                <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "auction")">Auction</a>
+                                    <ul>
+                                        <li>
+                                            <a href="@Url.Action("Index", "auction")">Auction List</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Create", "auction")">Create Auction</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block"><a href="~/login.html">Login</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block"><a href="@Url.Action("Create", "user")">Register</a></li>
+                                <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0">
+                            </ul>
+                        </nav>
+                        <!-- Main Navigation / End -->
+                    </div>
+                    <!-- Left Side Content / End -->
+                    <!-- Right Side Content / End -->
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex">
+                        <!-- Header Widget -->
+                        <div class="header-widget">
+                            <a href="@Url.Action("Create", "property")" class="button border" style="padding-right: 15px;">
+                                Add Property
+                                <i>
+                                    <img src="~/Content/images/icons8-house-white.png" style="width: 20px;height: 20px;" />
+                                </i>
+                            </a>
+                        </div>
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+                    <!-- Right Side Content / End -->
+                    <div class="header-user-menu user-menu add" style="padding-bottom: 0px; padding-left: 110px; ">
+                        <div class="header-user-name" style="width: 56px;padding-bottom: 20px;margin-left: -55px;">
+                            <span style="margin-left: -35px;">
+                                @{
+                                    string defaultImagePath = "~/Content/images/Default_Image.png";
+                                    string imageUrl = Url.Content(defaultImagePath);
+                                    string userName = Session["UserName"]?.ToString();
+                                }
+
+
+                                <img src="@imageUrl" alt="">
+
+                                @if (!string.IsNullOrEmpty(userName))
+                                {
+                                    <a style="padding: 10px;">Hi, @userName!</a>
+                                }
+                            </span>
+                        </div>
+                        <ul>
+                            <li><a href="@Url.Action("Details", "user")">profile</a></li>
+                            <li><a href="@Url.Action("Create", "property")"> Add Property</a></li>
+                            <li><a href="@Url.Action("Logout", "user")">Log Out</a></li>
+                        </ul>
+                    </div>
+                    <!-- Right Side Content / End -->
+
+                    <div class="right-side d-none d-none d-lg-none d-xl-flex sign ml-0">
+                        <!-- Header Widget -->
+                        <div class="header-widget sign-in">
+                            <a href="@Url.Action("Login", "user")">Sign In</a>
+                        </div>
+                        <!-- Header Widget / End -->
+                    </div>
+                    <!-- Right Side Content / End -->
+                    <!-- lang-wrap-->
+                    <div class="header-user-menu user-menu add d-none d-lg-none d-xl-flex">
+                        <div class="lang-wrap">
+                            <div class="show-lang">
+                                <span>
+                                    <img src="~/Content/images/globle-gray.png" style="width: 17px;padding-bottom: 7px;" /><strong>ENG</strong>
+                                </span>
+                                <i class="fa fa-caret-down arrlan"></i>
+                            </div>
+                            <ul class="lang-tooltip lang-action no-list-style">
+                                <li><a href="#" class="current-lan" data-lantext="En">English</a></li>
+                                <li><a href="#" data-lantext="Fr">Francais</a></li>
+                                <li><a href="#" data-lantext="Es">Espanol</a></li>
+                                <li><a href="#" data-lantext="De">Deutsch</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- lang-wrap end-->
+                </div>
+            </div>
+            <!-- Header / End -->
+
+        </header>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        <!-- START SECTION PROPERTIES LISTING -->
+        <section class="properties-list full featured portfolio blog">
+            <div class="container">
+                <section class="headings-2 pt-0 pb-0">
+                    <div class="pro-wrapper">
+                        <div class="detail-wrapper-body">
+                            <div class="listing-title-bar">
+                                <div class="text-heading text-left">
+                                    <p><a href="~/index.html">Home </a> &nbsp;/&nbsp; <span>Listings</span></p>
+                                </div>
+                                <h3>List View</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Search Form -->
+                <div class="col-12 px-0 parallax-searchs">
+                    <div class="banner-search-wrap">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="tabs_1">
+                                <div class="rld-main-search">
+                                    <div class="row">
+                                        <div class="rld-single-input">
+                                            <input type="text" id="keyword-input" placeholder="Enter Keyword...">
+                                        </div>
+                                        <div class="rld-single-select ml-22">
+                                            <select class="select single-select">
+                                                <option value="1">Property Type</option>
+                                                @foreach (var propertyType in Model)
+                                                {
+                                                    <option value="@propertyType.P_Type_ID">@propertyType.P_Type_Name</option>
+                                                }
+                                            </select>
+                                        </div>
+
+                                        <div class="rld-single-select">
+                                            <select class="select single-select mr-0">
+                                                <option value="1">Location</option>
+                                                @foreach (var propertyGovernment in Model)
+                                                {
+                                                    <option value="@propertyGovernment.Government_id">@propertyGovernment.Government_name</option>
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="dropdown-filter"><span>Advanced Search</span></div>
+                                        <div class="col-xl-2 col-lg-2 col-md-4 pl-0">
+                                            <a class="btn btn-yellow" href="#" id="search-button">Search Now</a>
+                                        </div>
+                                        <div class="explore__form-checkbox-list full-filter">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0">
+                                                    <!-- Form Property Status -->
+                                                    <div class="form-group categories">
+                                                        <div class="nice-select form-control wide" tabindex="0">
+                                                            <span class="current"><i class="fa fa-home"></i>Property Status</span>
+                                                            <ul class="list">
+                                                                <li data-value="1" class="option selected ">For Sale</li>
+                                                                <li data-value="2" class="option">For Rent</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!--/ End Form Property Status -->
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 py-1 pr-30 pl-0 ">
+                                                    <!-- Form Bedrooms -->
+                                                    <div class="form-group beds">
+                                                        <div class="nice-select form-control wide" tabindex="0">
+                                                            <span class="current"><i class="fa fa-bed" aria-hidden="true"></i> Bedrooms</span>
+                                                            <ul class="list">
+                                                                <li data-value="1" class="option selected">1</li>
+                                                                <li data-value="2" class="option">2</li>
+                                                                <li data-value="3" class="option">3</li>
+                                                                <li data-value="3" class="option">4</li>
+                                                                <li data-value="3" class="option">5</li>
+                                                                <li data-value="3" class="option">6</li>
+                                                                <li data-value="3" class="option">7</li>
+                                                                <li data-value="3" class="option">8</li>
+                                                                <li data-value="3" class="option">9</li>
+                                                                <li data-value="3" class="option">10</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!--/ End Form Bedrooms -->
+                                                </div>
+                                                <div class="col-lg-4 col-md-6 py-1 pl-0 pr-0">
+                                                    <!-- Form Bathrooms -->
+                                                    <div class="form-group bath">
+                                                        <div class="nice-select form-control wide" tabindex="0">
+                                                            <span class="current"><i class="fa fa-bath" aria-hidden="true"></i> Bathrooms</span>
+                                                            <ul class="list">
+                                                                <li data-value="1" class="option selected">1</li>
+                                                                <li data-value="2" class="option">2</li>
+                                                                <li data-value="3" class="option">3</li>
+                                                                <li data-value="3" class="option">4</li>
+                                                                <li data-value="3" class="option">5</li>
+                                                                <li data-value="3" class="option">6</li>
+                                                                <li data-value="3" class="option">7</li>
+                                                                <li data-value="3" class="option">8</li>
+                                                                <li data-value="3" class="option">9</li>
+                                                                <li data-value="3" class="option">10</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!--/ End Form Bathrooms -->
+                                                </div>
+                                                <div class="col-lg-5 col-md-12 col-sm-12 py-1 pr-30 mr-5 sld">
+                                                    <!-- Price Fields -->
+                                                    <div class="main-search-field-2">
+                                                        <!-- Area Range -->
+                                                        <div class="range-slider">
+                                                            <label>Area Size</label>
+                                                            <div id="area-range" data-min="0" data-max="1300" data-unit="sq ft"></div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <br>
+                                                        <!-- Price Range -->
+                                                        <div class="range-slider">
+                                                            <label>Price Range</label>
+                                                            <div id="price-range" data-min="0" data-max="600000" data-unit="$"></div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                    <!-- Checkboxes -->
+                                                    <div class="checkboxes one-in-row margin-bottom-10 ch-1">
+                                                        <input id="check-2" type="checkbox" name="check">
+                                                        <label for="check-2">Air Conditioning</label>
+                                                        <input id="check-3" type="checkbox" name="check">
+                                                        <label for="check-3">Swimming Pool</label>
+                                                        <input id="check-4" type="checkbox" name="check">
+                                                        <label for="check-4">Central Heating</label>
+                                                        <input id="check-5" type="checkbox" name="check">
+                                                        <label for="check-5">Laundry Room</label>
+                                                        <input id="check-6" type="checkbox" name="check">
+                                                        <label for="check-6">Gym</label>
+                                                        <input id="check-7" type="checkbox" name="check">
+                                                        <label for="check-7">Alarm</label>
+                                                        <input id="check-8" type="checkbox" name="check">
+                                                        <label for="check-8">Window Covering</label>
+                                                    </div>
+                                                    <!-- Checkboxes / End -->
+                                                </div>
+                                                <div class="col-lg-3 col-md-6 col-sm-12 py-1 pr-30">
+                                                    <!-- Checkboxes -->
+                                                    <div class="checkboxes one-in-row margin-bottom-10 ch-2">
+                                                        <input id="check-9" type="checkbox" name="check">
+                                                        <label for="check-9">WiFi</label>
+                                                        <input id="check-10" type="checkbox" name="check">
+                                                        <label for="check-10">TV Cable</label>
+                                                        <input id="check-11" type="checkbox" name="check">
+                                                        <label for="check-11">Dryer</label>
+                                                        <input id="check-12" type="checkbox" name="check">
+                                                        <label for="check-12">Microwave</label>
+                                                        <input id="check-13" type="checkbox" name="check">
+                                                        <label for="check-13">Washer</label>
+                                                        <input id="check-14" type="checkbox" name="check">
+                                                        <label for="check-14">Refrigerator</label>
+                                                        <input id="check-15" type="checkbox" name="check">
+                                                        <label for="check-15">Outdoor Shower</label>
+                                                    </div>
+                                                    <!-- Checkboxes / End -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Search Form -->
+
+                <section class="headings-2 pt-0">
+
+                    <!-- Add the search results container here -->
+                    <div id="search-results"></div>
+
+                    @foreach (var property in Model)
+                    {
+                        <div class="row featured portfolio-items" style="padding-bottom: 3%;">
+                            <div class="item col-lg-4 col-md-12 col-xs-12 landscapes sale pr-0 pb-0" data-aos="fade-up">
+                                <div class="project-single mb-0 bb-0">
+                                    <div class="project-inner project-head">
+                                        <div class="homes">
+                                            <div class="homes-tag button alt sale">
+                                                <p>
+                                                    @property.Status_Name
+                                                </p>
+                                            </div>
+                                            <div class="homes-price">
+                                                <p>
+                                                    @property.Property.Price/EG
+                                                </p>
+                                            </div>
+                                            @if (!string.IsNullOrEmpty(property.Property.ImagePath))
+                                            {
+                                                <img src="@Url.Content(property.Property.ImagePath)" alt="Property Image" class="img-responsive" style=" width: max-content;
+                                                background-color: black; height: 261px;">
+                                            }
+                                            else
+                                            {
+                                                <img src="~/Content/images/blog/b-11.jpg" alt="home-1" class="img-responsive">
+                                            }
+                                        </div>
+                                        <div class="button-effect">
+                                            <a href="@property.P3D_path" class="btn"><i class="fa fa-link" style="padding-top: 16px;"></i></a>
+                                            <a href="" class="img-poppu btn"><i class="fa fa-photo" style="padding-top: 16px;"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- homes content -->
+                            <div class="col-lg-8 col-md-12 homes-content pb-0 mb-44" data-aos="fade-up">
+                                <!-- homes address -->
+                                <h3>
+                                    @Html.ActionLink(property.Property.Title, "Details", new { id = property.Property.Pro_id }, null)
+                                </h3>
+                                <p class="homes-address mb-3">
+                                    <a href="~/single-property-1.html">
+                                        <i class="fa fa-map-marker"></i>
+                                        <span>
+                                            @property.District_name , @property.City_name , @property.Government_name
+                                        </span>
+                                    </a>
+                                </p>
+                                <!-- homes List -->
+                                <ul class="homes-list clearfix pb-3">
+                                    <li class="the-icons">
+                                        <i class="flaticon-bed mr-2" aria-hidden="true"></i>
+                                        <span>
+                                            @property.Property.NumberOfBedRooms <a>Bedrooms</a>
+                                        </span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-bathtub mr-2" aria-hidden="true"></i>
+                                        <span>
+                                            @property.Property.NumberOfBathRooms <a>Bathrooms</a>
+                                        </span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-square mr-2" aria-hidden="true"></i>
+                                        <span>
+                                            @property.Property.size <a>m²</a>
+                                        </span>
+                                    </li>
+                                    <li class="the-icons">
+                                        <i class="flaticon-car mr-2" aria-hidden="true"></i>
+                                        <span>
+                                            @property.Property.garage_num <a>Garages</a>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <div class="footer">
+                                    <a href="~/agent-details.html">
+                                        <img src="~/Content/images/testimonials/ts-1.jpg" alt="" class="mr-2">
+                                        @property.Property.UserID
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <nav aria-label="..." class="pt-0">
+                        <ul class="pagination lis-view">
+                            @if (ViewBag.CurrentPage > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" tabindex="-1">Previous</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="javascript:void(0);" tabindex="-1">Previous</a>
+                                </li>
+                            }
+
+                            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                            {
+                                if (i == ViewBag.CurrentPage)
+                                {
+                                    <li class="page-item active">
+                                        <a class="page-link" href="javascript:void(0);">@i <span class="sr-only">(current)</span></a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                                    </li>
+                                }
+                            }
+
+                            @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })">Next</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="javascript:void(0);" tabindex="-1">Next</a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+
+                </section>
+            </div>
+        </section>
+        <!-- END SECTION PROPERTIES LISTING -->
+        <!-- START FOOTER -->
+        <footer class="first-footer">
+            <div class="top-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="netabout">
+                                <a href="index.html" class="logo">
+                                    <img src="~/Content/images/logo-footer.svg" alt="netcom">
+                                </a>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum incidunt architecto soluta laboriosam, perspiciatis, aspernatur officiis esse.</p>
+                            </div>
+                            <div class="contactus">
+                                <ul>
+                                    <li>
+                                        <div class="info">
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            <p class="in-p">95 South Park Avenue, USA</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="info">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                            <p class="in-p">+456 875 369 208</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="info">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            <p class="in-p ti">support@findhouses.com</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="navigation">
+                                <h3>Navigation</h3>
+                                <div class="nav-footer">
+                                    <ul>
+                                        <li><a href="index.html">Home One</a></li>
+                                        <li><a href="properties-right-sidebar.html">Properties Right</a></li>
+                                        <li><a href="properties-full-list.html">Properties List</a></li>
+                                        <li><a href="properties-details.html">Property Details</a></li>
+                                        <li class="no-mgb"><a href="agents-listing-grid.html">Agents Listing</a></li>
+                                    </ul>
+                                    <ul class="nav-right">
+                                        <li><a href="agent-details.html">Agents Details</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="blog.html">Blog Default</a></li>
+                                        <li><a href="blog-details.html">Blog Details</a></li>
+                                        <li class="no-mgb"><a href="contact-us.html">Contact Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget">
+                                <h3>Twitter Feeds</h3>
+                                <div class="twitter-widget contuct">
+                                    <div class="twitter-area">
+                                        <div class="single-item">
+                                            <div class="icon-holder">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h5><a href="#">findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h4>about 5 days ago</h4>
+                                            </div>
+                                        </div>
+                                        <div class="single-item">
+                                            <div class="icon-holder">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h5><a href="#">findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h4>about 5 days ago</h4>
+                                            </div>
+                                        </div>
+                                        <div class="single-item">
+                                            <div class="icon-holder">
+                                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h5><a href="#">findhouses</a> all share them with me baby said inspet.</h5>
+                                                <h4>about 5 days ago</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="newsletters">
+                                <h3>Newsletters</h3>
+                                <p>Sign Up for Our Newsletter to get Latest Updates and Offers. Subscribe to receive news in your inbox.</p>
+                            </div>
+                            <form class="bloq-email mailchimp form-inline" method="post">
+                                <label for="subscribeEmail" class="error"></label>
+                                <div class="email">
+                                    <input type="email" id="subscribeEmail" name="EMAIL" placeholder="Enter Your Email">
+                                    <input type="submit" value="Subscribe">
+                                    <p class="subscription-success"></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second-footer">
+                <div class="container">
+                    <p>2021 © Copyright - All Rights Reserved.</p>
+                    <ul class="netsocials">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+        <!-- END FOOTER -->
+        <!--register form -->
+        <div class="login-and-register-form modal">
+            <div class="main-overlay"></div>
+            <div class="main-register-holder">
+                <div class="main-register fl-wrap">
+                    <div class="close-reg"><i class="fa fa-times" style="padding-top: 12px;"></i></div>
+                    <h3>Welcome to <span>Find<strong>Houses</strong></span></h3>
+                    <div class="soc-log fl-wrap">
+                        <p>Login</p>
+                        <a href="~/#" class="facebook-log"><i class="fa fa-facebook-official"></i>Log in with Facebook</a>
+                        <a href="~/#" class="twitter-log"><i class="fa fa-twitter"></i> Log in with Twitter</a>
+                    </div>
+                    <div class="log-separator fl-wrap"><span>Or</span></div>
+                    <div id="tabs-container">
+                        <ul class="tabs-menu">
+                            <li class="current"><a href="~/#tab-1">Login</a></li>
+                            <li><a href="~/#tab-2">Register</a></li>
+                        </ul>
+                        <div class="tab">
+                            <div id="tab-1" class="tab-contents">
+                                <div class="custom-form">
+                                    <form method="post" name="registerform">
+                                        <label>Username or Email Address * </label>
+                                        <input name="email" type="text" onClick="this.select()" value="">
+                                        <label>Password * </label>
+                                        <input name="password" type="password" onClick="this.select()" value="">
+                                        <button type="submit" class="log-submit-btn"><span>Log In</span></button>
+                                        <div class="clearfix"></div>
+                                        <div class="filter-tags">
+                                            <input id="check-a" type="checkbox" name="check">
+                                            <label for="check-a">Remember me</label>
+                                        </div>
+                                    </form>
+                                    <div class="lost_password">
+                                        <a href="~/#">Lost Your Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab">
+                                <div id="tab-2" class="tab-contents">
+                                    <div class="custom-form">
+                                        <form method="post" name="registerform" class="main-register-form" id="main-register-form2">
+                                            <label>First Name * </label>
+                                            <input name="name" type="text" onClick="this.select()" value="">
+                                            <label>Second Name *</label>
+                                            <input name="name2" type="text" onClick="this.select()" value="">
+                                            <label>Email Address *</label>
+                                            <input name="email" type="text" onClick="this.select()" value="">
+                                            <label>Password *</label>
+                                            <input name="password" type="password" onClick="this.select()" value="">
+                                            <button type="submit" class="log-submit-btn"><span>Register</span></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--register form end -->
+
+        <script src="~/Scripts/js/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/js/rangeSlider.js"></script>
+        <script src="~/Scripts/js/tether.min.js"></script>
+        <script src="~/Scripts/js/popper.min.js"></script>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/mmenu.min.js"></script>
+        <script src="~/Scripts/js/mmenu.js"></script>
+        <script src="~/Scripts/js/aos.js"></script>
+        <script src="~/Scripts/js/aos2.js"></script>
+        <script src="~/Scripts/js/smooth-scroll.min.js"></script>
+        <script src="~/Scripts/js/lightcase.js"></script>
+        <script src="~/Scripts/js/search.js"></script>
+        <script src="~/Scripts/js/light.js"></script>
+        <script src="~/Scripts/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/Scripts/js/popup.js"></script>
+        <script src="~/Scripts/js/searched.js"></script>
+        <script src="~/Scripts/js/ajaxchimp.min.js"></script>
+        <script src="~/Scripts/js/newsletter.js"></script>
+        <script src="~/Scripts/js/inner.js"></script>
+        <script src="~/Scripts/js/color-switcher.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+        $(document).ready(function () {
+        // Search button click event
+        $('#search-button').click(function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            var keyword = $('#keyword-input').val(); // Get the entered keyword
+
+            // Perform the search (example: filtering the properties)
+            var results = filterProperties(keyword);
+
+            // Display the search results
+            displayResults(results);
+        });
+
+        // Function to filter properties based on the keyword
+        function filterProperties(keyword) {
+            var results = []; // Array to store the filtered properties
+
+            // Perform the filtering logic here based on the keyword and your data
+
+            // Example filtering logic: check if the property title contains the keyword
+            @foreach (var property in Model)
+            {
+                var title = property.Property.Title;
+                if (title.ToLower().Contains(keyword.ToLower()))
+                {
+                    results.Add(property.Property.Title);
+                }
+            }
+
+            return results;
+        }
+
+        // Function to display the search results
+            function displayResults(results) {
+                var container = $('#search-results');
+
+                // Clear previous results
+                container.empty();
+
+                // Check if any results found
+                if (results.length > 0) {
+                    // Iterate over the results and append them to the container
+                    $.each(results, function (index, result) {
+                        container.append('<p>' + result + '</p>');
+                    });
+                } else {
+                    // No results found
+                    container.append('<p>No results found.</p>');
+                }
+            }
+        });
+        </script>
+        <script>
+            $(".dropdown-filter").on('click', function () {
+
+                $(".explore__form-checkbox-list").toggleClass("filter-block");
+
+            });
+
+        </script>
+
+    </div>
+</body>

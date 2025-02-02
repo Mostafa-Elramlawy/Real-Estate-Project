@@ -1,0 +1,560 @@
+﻿@using System.Linq
+
+@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="html 5 template">
+    <meta name="author" content="">
+    <title>Find Houses - HTML5 Template</title>
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="~/Content/image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="~/Content/css/jquery-ui.css">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i%7CMontserrat:600,800" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="~/Content/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+    <!-- ARCHIVES CSS -->
+    <link rel="stylesheet" href="~/Content/css/search.css">
+    <link rel="stylesheet" href="~/Content/css/dashbord-mobile-menu.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/swiper.min.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/lightcase.css">
+    <link rel="stylesheet" href="~/Content/css/owl-carousel.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/menu.css">
+    <link rel="stylesheet" href="~/Content/css/slick.css">
+    <link rel="stylesheet" href="~/Content/css/styles.css">
+    <link rel="stylesheet" id="color" href="~/Content/css/default.css">
+</head>
+
+<body class="maxw1600 m0a dashboard-bd">
+    <!-- Wrapper -->
+    <div id="wrapper" class="int_main_wraapper">
+        <!-- START SECTION HEADINGS -->
+        <!-- Header Container
+        ================================================== -->
+        <div class="dash-content-wrap">
+            <header id="header-container" class="db-top-header">
+                <!-- Header -->
+                <div id="header">
+                    <div class="container-fluid">
+                        <!-- Left Side Content -->
+                        <div class="left-side">
+                            <!-- Logo -->
+                            <div id="logo">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <img src="~/Content/images/logo.svg" alt="">
+                                </a>
+                            </div>
+                            <!-- Mobile Navigation -->
+                            <div class="mmenu-trigger">
+                                <button class="hamburger hamburger--collapse" type="button">
+                                    <span class="hamburger-box">
+                                        <span class="hamburger-inner"></span>
+                                    </span>
+                                </button>
+                            </div>
+                            <!-- Main Navigation -->
+                            <nav id="navigation" class="style-1">
+                                <ul id="responsive">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Home")">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "property")">Property</a>
+                                    </li>
+                                    <li>
+                                        <a href="~/#">Pages</a>
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Details", "user")">User Panel</a>
+                                                <ul>
+						    <li><a href="@Url.Action("Details", "user")">User Profile</a></li>
+
+                                                    <li><a href="@Url.Action("MyProperties", "user")">My Properties</a></li>
+
+                                                    <li><a href="@Url.Action("Create", "Property")">Add Property</a></li>
+
+                                                </ul>
+                                            </li>
+                                            <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                                            <li><a href="@Url.Action("Login", "user")">Login</a></li>
+                                            <li><a href="@Url.Action("Create", "user")">Register</a></li>
+                                            <li><a href="@Url.Action("Create", "CM")">CraftsMen</a></li>
+                                            @if (Session["UserID"] != null)
+                                            {
+                                                int roleId = Convert.ToInt32(Session["Role_id"]);
+
+                                                if (roleId == 0)
+                                                {
+                                                    <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                                }
+                                                else if (roleId == 1)
+                                                {
+                                                    <li><a href="@Url.Action("Index", "Admin")">Dashboard</a></li>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <li><a href="@Url.Action("Index", "Admin")" style="display: none;">Dashboard</a></li>
+                                            }
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "auction")">Auction</a>
+                                        <ul>
+                                            <li>
+                                                <a href="@Url.Action("Index", "auction")">Auction List</a>
+                                            </li>
+                                            <li>
+                                                <a href="@Url.Action("Create", "auction")">Create Auction</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="@Url.Action("Index", "Admin")">Admin Dashbourd</a></li>
+
+                                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block"><a href="~/login.html">Login</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block"><a href="@Url.Action("Create", "user")">Register</a></li>
+                                    <li class="d-none d-xl-none d-block d-lg-block mt-5 pb-4 ml-5 border-bottom-0">
+                                </ul>
+                            </nav>
+                            <div class="clearfix"></div>
+                            <!-- Main Navigation / End -->
+                        </div>
+                        <!-- Left Side Content / End -->
+                        <!-- Right Side Content / -->
+                        <div class="header-user-menu user-menu add" style="padding-bottom: 0px; padding-left: 110px; ">
+                            <div class="header-user-name" style="width: 56px;padding-bottom: 20px;margin-left: -55px;">
+                                <span style="margin-left: -35px;">
+                                    @{
+                                        string defaultImagePath = "~/Content/images/Default_Image.png";
+                                        string imageUrl = Url.Content(defaultImagePath);
+                                        string userName = Session["UserName"]?.ToString();
+                                    }
+
+                                    @if (Model != null && Model.Property != null)
+                                    {
+                                        var user = Model.User;
+                                        string userImagePath = user != null ? user.image : null;
+                                        string userImageUrl = !string.IsNullOrEmpty(userImagePath) ? Url.Content(userImagePath) : imageUrl;
+
+                                        <img src="@userImageUrl" alt="">
+                                    }
+
+                                    <img src="@imageUrl" alt="">
+
+                                    @if (!string.IsNullOrEmpty(userName))
+                                    {
+                                        <a style="padding: 10px;">Hi, @userName!</a>
+                                    }
+
+                                </span>
+                            </div>
+                            <ul>
+                                <li><a href="@Url.Action("Details", "user")">profile</a></li>
+                                <li><a href="@Url.Action("Create", "property")"> Add Property</a></li>
+                                <li><a href="@Url.Action("Logout", "user")">Log Out</a></li>
+                            </ul>
+                        </div>
+                        <!-- Right Side Content / End -->
+                    </div>
+                </div>
+                <!-- Header / End -->
+            </header>
+        </div>
+        <div class="clearfix"></div>
+        <!-- Header Container / End -->
+        <!-- START SECTION DASHBOARD -->
+        <section class="user-page section-padding">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 col-xs-12 pl-0 pr-0 user-dash">
+                        <div class="user-profile-box mb-0">
+                            <div class="sidebar-header"><img src="~/Content/images/logo-blue.svg" alt="header-logo2.png"> </div>
+                            <div class="header clearfix">
+                                <img src="~/Content/images/Default_Image.png" alt="avatar" class="img-fluid profile-img">
+                            </div>
+                            <div class="active-user">
+                                <h2>
+                                    @if (!string.IsNullOrEmpty(userName))
+                                    {
+                                        <a style="padding: 10px;">@userName</a>
+                                    }
+                                </h2>
+                            </div>
+                            <div class="detail clearfix">
+                                <ul class="mb-0">
+                                    <li>
+                                        <a class="active" href="@Url.Action("Index", "Admin")">
+                                            <i class="fa fa-user"></i>Admin Dashpoard
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("AIndex", "Admin")">
+                                            <i class="fa fa-list" aria-hidden="true"></i>Auction Request
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("AdminCreate", "user")">
+                                            <i class="fa fa-list" aria-hidden="true"></i>Add New Admin
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Logout", "user")">
+                                            <img src="~/Content/images/icons8-logout-48.png" style="width: 11%;" />Log Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-12 col-xs-12 pl-0 user-dash2">
+                        <div class="col-lg-12 mobile-dashbord dashbord">
+                            <div class="dashboard_navigationbar dashxl">
+                                <div class="dropdown">
+                                    <button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10 mr-2"></i> Dashboard Navigation</button>
+                                    <ul id="myDropdown" class="dropdown-content">
+                                        <li>
+                                            <a class="active" href="dashboard.html">
+                                                <i class="fa fa-map-marker mr-3"></i> Dashboard
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="user-profile.html">
+                                                <i class="fa fa-user mr-3"></i>Profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="my-listings.html">
+                                                <i class="fa fa-list mr-3" aria-hidden="true"></i>My Properties
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="favorited-listings.html">
+                                                <i class="fa fa-heart mr-3" aria-hidden="true"></i>Favorited Properties
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="add-property.html">
+                                                <i class="fa fa-list mr-3" aria-hidden="true"></i>Add Property
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="payment-method.html">
+                                                <i class="fas fa-credit-card mr-3"></i>Payments
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="invoice.html">
+                                                <i class="fas fa-paste mr-3"></i>Invoices
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="change-password.html">
+                                                <i class="fa fa-lock mr-3"></i>Change Password
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="index.html">
+                                                <i class="fas fa-sign-out-alt mr-3"></i>Log Out
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashborad-box stat bg-white">
+                            <h4 class="title">Manage Dashboard</h4>
+                            <div class="section-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-6 col-xs-12 dar pro mr-3">
+                                        <div class="item">
+                                            <div class="icon">
+                                                <img src="~/Content/images/icons8-users-64.png" style="margin: -8px; padding-top: 8px;" />
+                                            </div>
+                                            <div class="info">
+                                                <h6 class="number">@ViewBag.UserCount</h6>
+                                                <p class="type ml-1">Total Users</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 col-xs-12 dar rev mr-3">
+                                        <div class="item">
+                                            <div class="icon">
+                                                <img src="~/Content/images/icons8-houses-50.png" style="margin: -8px; padding-top: 8px;" />
+                                            </div>
+                                            <div class="info">
+                                                <h6 class="number">@ViewBag.PropertyCount</h6>
+                                                <p class="type ml-1">Total Properties</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 dar com mr-3">
+                                        <div class="item mb-0">
+                                            <div class="icon">
+                                                <img src="~/Content/images/icons8-workers-50.png" style="margin: -8px; padding-top: 8px;" />
+                                            </div>
+                                            <div class="info">
+                                                <h6 class="number">@ViewBag.CraftsmenCount</h6>
+                                                <p class="type ml-1">Total Craftsmen</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-6 dar booked">
+                                        <div class="item mb-0">
+                                            <div class="icon">
+                                                <img src="~/Content/images/icons8-auction-53.png" style="margin: -8px; padding-top: 8px;" />
+                                            </div>
+                                            <div class="info">
+                                                <h6 class="number">@ViewBag.AuctionCount</h6>
+                                                <p class="type ml-1">Total Auctions</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashborad-box">
+                            <h4 class="title">Properteis List</h4>
+                            <div class="section-body listing-table">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-scroll" style="max-height: 400px; overflow-y: auto;">
+                                        <thead>
+                                            <tr>
+                                                <th>Property ID</th>
+                                                <th>Price</th>
+                                                <th>Title</th>
+                                                <th>Description</th>
+                                                <th>Number of Bedrooms</th>
+                                                <th>Number of Bathrooms</th>
+                                                <th>Number of Living Rooms</th>
+                                                <th>Size</th>
+                                                <th>Garage Number</th>
+                                                <th>Floor Number</th>
+                                                <th>Building Number</th>
+                                                <th>Status ID</th>
+                                                <th>Property Type ID</th>
+                                                <th>City ID</th>
+                                                <th>Government ID</th>
+                                                <th>District ID</th>
+                                                <th>User ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var property in ((List<ClassLibrary2.Property>)ViewBag.Properties).Take(10))
+                                            {
+                                                <tr>
+                                                    <td>@property.Pro_id</td>
+                                                    <td>@property.Price</td>
+                                                    <td>@property.Title</td>
+                                                    <td>@property.Description</td>
+                                                    <td>@property.NumberOfBedRooms</td>
+                                                    <td>@property.NumberOfBathRooms</td>
+                                                    <td>@property.NumOfLivingRoom</td>
+                                                    <td>@property.size</td>
+                                                    <td>@property.garage_num</td>
+                                                    <td>@property.Floor_Num</td>
+                                                    <td>@property.Building_Num</td>
+                                                    <td>@property.Status_ID</td>
+                                                    <td>@property.P_Type_ID</td>
+                                                    <td>@property.City_id</td>
+                                                    <td>@property.Government_id</td>
+                                                    <td>@property.District_ID</td>
+                                                    <td>@property.UserID</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashborad-box">
+                            <h4 class="title">Auctions List</h4>
+                            <div class="section-body listing-table">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-scroll" style="max-height: 400px; overflow-y: auto;">
+                                        <thead>
+                                            <tr>
+                                                <th>Auction ID</th>
+                                                <th>Bid Name</th>
+                                                <th>Start Price</th>
+                                                <th>Bid Start</th>
+                                                <th>Bid End</th>
+                                                <th>Lowest Bidding Price</th>
+                                                <th>Property ID</th>
+                                                <th>Status ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var auction in ViewBag.Auctions)
+                                            {
+                                                <tr>
+                                                    <td>@auction.AuctionID</td>
+                                                    <td>@auction.Bid_Name</td>
+                                                    <td>@auction.Start_price</td>
+                                                    <td>@auction.Bid_start</td>
+                                                    <td>@auction.Bid_End</td>
+                                                    <td>@auction.lowest_bidding_price</td>
+                                                    <td>@auction.Pro_id</td>
+                                                    <td>@auction.AStatus_ID</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashborad-box">
+                            <h4 class="title">Craftsmen List</h4>
+                            <div class="section-body listing-table">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-scroll" style="max-height: 400px; overflow-y: auto;">
+                                        <thead>
+                                            <tr>
+                                                <th>CraftsManID</th>
+                                                <th>CraftsMen_Name</th>
+                                                <th>Address</th>
+                                                <th>Job</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var craftsman in ViewBag.Craftsmen)
+                                            {
+                                                <tr>
+                                                    <td>@craftsman.CM_ID</td>
+                                                    <td>@craftsman.CM_Name</td>
+                                                    <td>@craftsman.CM_Address</td>
+                                                    <td>@craftsman.CM_Job</td>
+                                                    <td>
+                                                        @Html.ActionLink("Edit", "Edit", "CM", new { id = craftsman.CM_ID }, null)
+                                                    </td>
+                                                    <td>
+                                                        @Html.ActionLink("Delete", "Delete", "CM", new { id = craftsman.CM_ID }, null)
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashborad-box mb-0">
+                            <h4 class="heading pt-0" style="text-align: center;">Modify Section</h4>
+                            <div class="section-body">
+                                <div class="d-inline-flex justify-content-center align-items-center flex-wrap group-20 mb40">
+                                    <div class="btn-group-20" style="margin-left: 77px;">
+                                        <button class="btn btn-primary btn-anis ml-0" style="margin-right: 20px;">
+                                            <a href="@Url.Action("Create", "Auction")" style="text-decoration: none; color: white;">Create Auction</a>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group-20" style="margin-right: 20px;">
+                                        <button class="btn btn-primary btn-anis">
+                                            @Html.ActionLink("Add City", "CreateCity", null, new { @style = "text-decoration: none; color: white;" })
+                                        </button>
+                                    </div>
+                                    <div class="btn-group-20" style="margin-right: 20px;">
+                                        <button class="btn btn-primary btn-anis">
+                                            @Html.ActionLink("Add District", "CreateDistrict", null, new { @style = "text-decoration: none; color: white;" })
+                                        </button>
+                                    </div>
+                                    <div class="btn-group-20" style="margin-right: 20px;">
+                                        <button class="btn btn-primary btn-anis">
+                                            @Html.ActionLink("Add Property Type", "CreateP_Type", null, new { @style = "text-decoration: none; color: white;" })
+                                        </button>
+                                    </div>
+                                    <div class="btn-group-20" style="margin-right: 20px;">
+                                        <button class="btn btn-primary btn-anis">
+                                            @Html.ActionLink("Add Government", "CreateGovernment", null, new { @style = "text-decoration: none; color: white;" })
+                                        </button>
+                                    </div>
+                                    <div class="btn-group-20" style="margin-right: 20px;">
+                                        <button class="btn btn-primary btn-anis">
+                                            @Html.ActionLink("Add Status", "CreateStatus", null, new { @style = "text-decoration: none; color: white;" })
+                                        </button>
+                                    </div>
+                                    <div class="btn-group-20" style="margin-right: 20px;">
+                                        <button class="btn btn-primary btn-anis">
+                                            @Html.ActionLink("Add Craftsman", "Create", "CM", null, new { @style = "text-decoration: none; color: white;" })
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- START FOOTER -->
+                        <div class="second-footer">
+                            <div class="container">
+                                <p>2023 © Copyright - All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END SECTION DASHBOARD -->
+        <a data-scroll href="#wrapper" class="go-up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></a>
+        <!-- END FOOTER -->
+        <!-- START PRELOADER -->
+        <div id="preloader">
+            <div id="status">
+                <div class="status-mes"></div>
+            </div>
+        </div>
+        <!-- END PRELOADER -->
+        <!-- ARCHIVES JS -->
+        <script src="~/Scripts/js/jquery-3.5.1.min.js"></script>
+        <script src="~/Scripts/js/jquery-ui.js"></script>
+        <script src="~/Scripts/js/tether.min.js"></script>
+        <script src="~/Scripts/js/moment.js"></script>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/mmenu.min.js"></script>
+        <script src="~/Scripts/js/mmenu.js"></script>
+        <script src="~/Scripts/js/swiper.min.js"></script>
+        <script src="~/Scripts/js/swiper.js"></script>
+        <script src="~/Scripts/js/slick.min.js"></script>
+        <script src="~/Scripts/js/slick2.js"></script>
+        <script src="~/Scripts/js/fitvids.js"></script>
+        <script src="~/Scripts/js/jquery.waypoints.min.js"></script>
+        <script src="~/Scripts/js/jquery.counterup.min.js"></script>
+        <script src="~/Scripts/js/imagesloaded.pkgd.min.js"></script>
+        <script src="~/Scripts/js/isotope.pkgd.min.js"></script>
+        <script src="~/Scripts/js/smooth-scroll.min.js"></script>
+        <script src="~/Scripts/js/lightcase.js"></script>
+        <script src="~/Scripts/js/search.js"></script>
+        <script src="~/Scripts/js/owl.carousel.js"></script>
+        <script src="~/Scripts/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/Scripts/js/ajaxchimp.min.js"></script>
+        <script src="~/Scripts/js/newsletter.js"></script>
+        <script src="~/Scripts/js/jquery.form.js"></script>
+        <script src="~/Scripts/js/jquery.validate.min.js"></script>
+        <script src="~/Scripts/js/searched.js"></script>
+        <script src="~/Scripts/js/dashbord-mobile-menu.js"></script>
+        <script src="~/Scripts/js/forms-2.js"></script>
+        <script src="~/Scripts/js/color-switcher.js"></script>
+
+        <script>
+            $(".header-user-name").on("click", function () {
+                $(".header-user-menu ul").toggleClass("hu-menu-vis");
+                $(this).toggleClass("hu-menu-visdec");
+            });
+
+        </script>
+
+        <!-- MAIN JS -->
+        <script src="~/Scripts/js/script.js"></script>
+
+    </div>
+    <!-- Wrapper / End -->
+</body>

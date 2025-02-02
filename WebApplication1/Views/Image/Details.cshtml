@@ -1,0 +1,21 @@
+﻿@model WebApplication1.Models.Property_img
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div style="font-family:Arial">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Property_img</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="display-field">
+                <img src="@Url.Content(@Model.img_path)" alt="@Model.img_name" style="width:100px;"/>
+            </div>
+
+        </dl>
+    </div>
+</div>
